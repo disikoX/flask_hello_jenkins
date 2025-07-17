@@ -1,0 +1,7 @@
+__pycache__
+*.pyc 
+venv
+CACHEDIR.TAG
+pyvenv.cfg
+.git
+
