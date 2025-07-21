@@ -1,3 +1,4 @@
+
 pipeline {
     agent {
         kubernetes {
@@ -10,11 +11,17 @@ metadata:
     component: ci
 spec:
   containers:
-    - name: python
-      image: python:3.7
-      command:
-        - cat
-      tty: true
+  - name: python
+    image: python:3.7
+    command: ['cat']
+    tty: true
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+  - name: jnlp  # Required Jenkins agent container
+    image: jenkins/inbound-agent:latest
+    args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
 """
         }
     }
@@ -23,11 +30,13 @@ spec:
         stage('Test python') {
             steps {
                 container('python') {
-                    sh 'pip install -r requirements.txt'
-                    sh 'python test.py'
+                    script {
+                        sh 'python --version'
+                        sh 'pip install -r requirements.txt'
+                        sh 'python test.py'
+                    }
                 }
             }
         }
     }
 }
-
