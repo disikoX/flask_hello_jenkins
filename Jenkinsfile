@@ -2,14 +2,11 @@ pipeline {
     agent any
 
     stages {
-      stage('Install Python') {
+          stage('Build Docker Image') {
             steps {
-                sh '''
-                    sudo apt-get update
-                    sudo apt-get install -y python3 python3-pip python3-venv
-                '''
-            }
-        }  
+              sh 'docker build -t my-python-app .'
+          }
+    }  
         stage('Test python') {
             steps {
                 sh 'python3 -m venv venv'
