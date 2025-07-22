@@ -16,6 +16,10 @@ spec:
       command:
         - cat
       tty: true
+    - name: jnlp
+      image: jenkins/inbound-agent:3107.v665000b_51092-15
+      args: [""]
+
 """
         }
     }
