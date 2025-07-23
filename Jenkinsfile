@@ -1,5 +1,8 @@
 pipeline {
     agent {
+      triggers {
+        pollSCM('* * * * *')
+      }
         kubernetes {
             inheritFrom 'default'
             yaml """
