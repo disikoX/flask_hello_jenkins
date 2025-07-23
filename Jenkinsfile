@@ -9,6 +9,19 @@ pipeline {
                 command 'cat'
                 ttyEnabled true
             }
+            yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: python
+    image: python:3.7
+    command:
+    - cat
+    tty: true
+  - name: jnlp
+    image: jenkins/inbound-agent:4.11-1
+"""
         }
     }
     stages {
