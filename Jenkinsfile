@@ -2,7 +2,6 @@ pipeline {
     agent {
         kubernetes {
             inheritFrom 'default'
-            label 'my-python-job'
             containerTemplate {
                 name 'python'
                 image 'python:3.7'
