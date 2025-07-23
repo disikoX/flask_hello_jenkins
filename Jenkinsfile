@@ -12,19 +12,6 @@ spec:
     command:
     - cat
     tty: true
-  - name: jnlp
-    image: jenkins/inbound-agent:4.11-1
-    env:
-    - name: JENKINS_SECRET
-      value: ${JENKINS_SECRET}
-    - name: JENKINS_TUNNEL
-      value: jenkins-service-name:50000  # Use actual service name
-    - name: JENKINS_AGENT_NAME
-      value: ${JENKINS_AGENT_NAME}
-    - name: JENKINS_URL
-      value: http://jenkins-service-name:8080/  # Use actual service name
-    - name: JENKINS_AGENT_WORKDIR
-      value: /home/jenkins/agent
 """
         }
     }
