@@ -1,8 +1,5 @@
 pipeline {
     agent {
-      triggers {
-        pollSCM('* * * * *')
-      }
         kubernetes {
             inheritFrom 'default'
             yaml """
@@ -18,6 +15,9 @@ spec:
 """
         }
     }
+    triggers {
+        pollSCM('* * * * *')
+      }
     stages {
         stage('Test python') {
             steps {
