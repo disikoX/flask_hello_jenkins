@@ -28,14 +28,15 @@ spec:
                 }
             }
         }
-    }
-  stage('Build image') {
-    steps {
-        container('docker') {
-            sh 'docker build -t localhost:3999/pythontest:latest .'
-            sh 'docker push localhost:3999/pythontest:latest'
+        stage('Build image') {
+            steps {
+               container('docker') {
+                  sh 'docker build -t localhost:3999/pythontest:latest .'
+                  sh 'docker push localhost:3999/pythontest:latest'
         }
     }
 }
 
-}
+
+    }
+ }
