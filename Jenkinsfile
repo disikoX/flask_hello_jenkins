@@ -43,8 +43,8 @@ spec:
         stage('Build image') {
             steps {
                container('docker') {
-                  sh 'docker build -t  192.168.49.2:5000/pythontest:latest .'
-                  sh 'docker push  192.168.49.2:5000/pythontest:latest'
+                  sh 'docker build -t  host.minikube.internal:4000/pythontest:latest .'
+                  sh 'docker push  host.minikube.internal:4000/pythontest:latest'
         }
     }
 }
