@@ -44,7 +44,7 @@ spec:
             steps {
                container('docker') {
                   sh 'docker build -t  host.minikube.internal:4000/pythontest:latest .'
-                  sh 'docker push  host.minikube.internal:4000/pythontest:latest'
+                  sh 'docker push --insecure  host.minikube.internal:4000/pythontest:latest'
         }
     }
 }
